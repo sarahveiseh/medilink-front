@@ -2,14 +2,34 @@ import { lazyWithRetry } from "components/lazy-with-retry";
 
 export const protectedRoutes = [
   {
-    path: "/users",
+    path: "/admin",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/users")),
+    component: lazyWithRetry(() => import("views/profile")),
   },
   {
-    path: "/dashboard",
+    path: "/doctors/add",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/dashboard")),
+    component: lazyWithRetry(() => import("views/doctors/add-doctor/views")),
+  },
+  {
+    path: "/doctors",
+    layout: "admin",
+    component: lazyWithRetry(() => import("views/doctors/list/views")),
+  },
+  {
+    path: "/patients/add",
+    layout: "admin",
+    component: lazyWithRetry(() => import("views/patients/add-patients/views")),
+  },
+  {
+    path: "/patients/details/:id",
+    layout: "admin",
+    component: lazyWithRetry(() => import("views/patients/details/views")),
+  },
+  {
+    path: "/patients",
+    layout: "admin",
+    component: lazyWithRetry(() => import("views/patients/list/views")),
   },
 ];
 

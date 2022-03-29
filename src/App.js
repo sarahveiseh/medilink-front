@@ -13,7 +13,7 @@ export const App = () => (
           <Router />
         </UiProvider>
       </Provider>
-      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
     </QueryClientProvider>
   </div>
 );

@@ -1,21 +1,24 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { UserDropDown } from "./user";
+import { ProfileDropDown } from "./profile";
+import { DoctorDropDown } from "./doctors";
+import { PatientDropDown } from "./patient";
 
 export const AdminDashboardOpen = () => {
   const { pathname } = useLocation();
 
   return (
     <div className="w-full h-full ">
-      <div className="flex flex-col w-full h-full px-4 pb-20 space-y-8 overflow-y-scroll scrollbar-hide">
+      <div className="flex flex-col w-full h-full px-4 pb-20 space-y-12 overflow-y-scroll scrollbar-hide">
         <Link
           to="/dashboard"
           className="pt-8 text-xl font-semibold text-center text-white "
         >
-          icon
+          مدلینک
         </Link>
-
-        <UserDropDown pathname={pathname} />
+        <ProfileDropDown pathname={pathname} />
+        <DoctorDropDown pathname={pathname} />
+        <PatientDropDown pathname={pathname} />
       </div>
     </div>
   );

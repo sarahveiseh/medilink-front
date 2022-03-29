@@ -1,5 +1,5 @@
 import { ICChevronDown } from "icons/chevron-down";
-import { ICChevronRight } from "icons/chevron-right";
+import { ICChevronLeft } from "icons/chevron-left";
 
 export const DropDownButton = ({
   className,
@@ -12,34 +12,29 @@ export const DropDownButton = ({
 }) => {
   return (
     <button
-      className={`w-full row-between focus:outline-none
+      className={`w-full flex justify-between items-center  focus:outline-none
           ${
             active
-              ? "text-blue-500 font-seminole"
-              : " text-dark transform hover:opacity-80"
+              ? "text-blue-500"
+              : " text-gray-200 transform hover:opacity-80"
           }
           ${className}`}
       onClick={() => toggle()}
-      role="button"
       type="button"
     >
-      <div className="row-items-center">
+      <div className=" flex justify-center">
         {icon && icon()}
-        <div
-          className={`flex items-center whitespace-nowrap
-            ${active ? "text-blue-500" : "text-dark"}`}
+        <span
+          className={`mt-1
+            ${active ? "text-blue-500" : "text-gray-200"}`}
         >
           {label}
-        </div>
+        </span>
       </div>
-      {!hideArrow && (
-        <>
-          {open ? (
-            <ICChevronDown className="w-3 h-3" role="close" id="close" />
-          ) : (
-            <ICChevronRight className="w-3 h-3 " />
-          )}
-        </>
+      {open ? (
+        <ICChevronDown className="w-5 h-5" id="close" />
+      ) : (
+        <ICChevronLeft className="w-5 h-5 " />
       )}
     </button>
   );

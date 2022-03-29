@@ -20,7 +20,7 @@ export const AdminDashboardClose = ({ setElement, setPosition }) => {
     const el = getBtn(e?.target);
 
     setPosition([
-      +el?.offsetRight - +el?.parentNode?.scrollRight,
+      300,
       +el?.offsetTop - +el?.offsetParent?.scrollTop + (+e?.pageY - +e?.clientY),
     ]);
     setElement(menu);
@@ -58,7 +58,7 @@ export const AdminDashboardClose = ({ setElement, setPosition }) => {
         onClick={() => push("/doctors")}
       >
         <ICDoctor
-          className={`w-10 h-10
+          className={`w-10 h-10 p-0.5
             ${
               pathname.startsWith("/doctors")
                 ? "text-blue-500"
@@ -74,7 +74,7 @@ export const AdminDashboardClose = ({ setElement, setPosition }) => {
         onClick={() => push("/patients")}
       >
         <ICPatient
-          className={`w-10 h-10 text-white
+          className={`w-10 h-10 p-0.5
             ${
               pathname.startsWith("/patients")
                 ? "text-blue-500"
