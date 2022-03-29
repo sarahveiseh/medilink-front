@@ -1,18 +1,18 @@
-import { memo, Suspense } from 'react'
-import { BrowserRouter, Switch, Redirect } from 'react-router-dom'
-import { indexRoutes } from 'routes/index'
-import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute'
+import { Suspense } from "react";
+import { BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { indexRoutes } from "routes/index";
+import { PrivateRoute } from "components/PrivateRoute/PrivateRoute";
 
-import { useUi } from 'hooks/use-ui'
-import { Toast } from 'components/toast'
-import { AdminLayout } from 'layouts/admin'
-import { Skeleton } from './skeleton'
+import { useUi } from "hooks/use-ui";
+import { Toast } from "components/toast";
+import { AdminLayout } from "layouts/admin";
+import { Skeleton } from "./skeleton";
 
-export const Router = memo(() => {
+export const Router = () => {
   const {
     uiState: { toast },
     toggleToast,
-  } = useUi()
+  } = useUi();
 
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ export const Router = memo(() => {
           <Switch>
             {indexRoutes.map((prop, key) => {
               if (prop.redirect)
-                return <Redirect from={prop.path} to={prop.to} key={key} />
+                return <Redirect from={prop.path} to={prop.to} key={key} />;
               return (
                 <PrivateRoute
                   path={prop.path}
@@ -29,7 +29,7 @@ export const Router = memo(() => {
                   isPublic={prop.isPublic}
                   key={key}
                 />
-              )
+              );
             })}
           </Switch>
         </Suspense>
@@ -38,7 +38,5 @@ export const Router = memo(() => {
         <Toast {...toast} close={() => toggleToast({ open: false })} />
       )}
     </BrowserRouter>
-  )
-})
-
-
+  );
+};

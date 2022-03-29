@@ -6,12 +6,14 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 export const App = () => (
-  <QueryClientProvider client={new QueryClient()}>
-    <Provider store={store}>
-      <UiProvider>
-        <Router />
-      </UiProvider>
-    </Provider>
-    <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
-  </QueryClientProvider>
+  <div className=" scrollbar-hide">
+    <QueryClientProvider client={new QueryClient()}>
+      <Provider store={store}>
+        <UiProvider>
+          <Router />
+        </UiProvider>
+      </Provider>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+    </QueryClientProvider>
+  </div>
 );

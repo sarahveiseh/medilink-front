@@ -1,20 +1,20 @@
-import { Drawer } from 'components/drawer'
-import { useUi } from 'hooks'
-import { memo, useState } from 'react'
-import { AdminDashboardClose } from './admin-dashboard-close'
-import { AdminDashboardOpen } from './admin-dashboard-open'
-import { AdminDashboardToggle } from './toggle'
+import { Drawer } from "components/drawer";
+import { useUi } from "hooks";
+import { useState } from "react";
+import { AdminDashboardClose } from "./admin-dashboard-close";
+import { AdminDashboardOpen } from "./admin-dashboard-open";
+import { AdminDashboardToggle } from "./toggle";
 
-export const AdminDashboard = memo(() => {
+export const AdminDashboard = () => {
   const {
     uiState: {
       drawer: { open },
     },
     toggleDrawer,
-  } = useUi()
+  } = useUi();
 
-  const [element, setElement] = useState('')
-  const [position, setPosition] = useState([])
+  const [element, setElement] = useState("");
+  const [position, setPosition] = useState([]);
 
   return (
     <Drawer
@@ -33,5 +33,5 @@ export const AdminDashboard = memo(() => {
       )}
       <AdminDashboardToggle toggleDrawer={toggleDrawer} open={open} />
     </Drawer>
-  )
-})
+  );
+};

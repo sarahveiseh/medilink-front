@@ -2,7 +2,6 @@ import { useValidation } from "hooks/use-validation";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { classNames } from "utils/classes";
 import { ToolTip } from "../q-tooltip";
 import { InputSkeleton } from "./skeleton";
 
@@ -26,10 +25,10 @@ export const Input = (props) => {
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <div className="relative flex flex-col items-start w-full ">
             <div
-              className={classNames("flex items-center", props.label && "mb-2")}
+              className={`flex items-center text-sm ${props.label && "mb-2"}`}
             >
               {props.label && (
-                <label className="text-gray-700" htmlFor={props.name}>
+                <label className=" text-sm text-gray-700" htmlFor={props.name}>
                   {props.label}
                 </label>
               )}
@@ -64,19 +63,20 @@ export const Input = (props) => {
                     disabled={props.disabled}
                     min={props.minNumber}
                     max={props.maxNumber}
-                    className={classNames(
-                      " w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900 placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100 ",
-                      props.className || "",
-                      props.disabled && "text-gray-500",
-                      error
-                        ? "border border-red-400 shadow"
-                        : "border border-gray-300 focus:ring-1 focus:ring-indigo-400 ",
-                      props.textIcon ? "rounded rounded-l-none" : "rounded"
-                    )}
+                    className={`
+                      w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900 placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100
+                      ${props.className || ""},
+                      ${props.disabled && "text-gray-500"}
+                      ${
+                        error
+                          ? "border border-red-400 shadow"
+                          : "border border-gray-300 focus:ring-1 focus:ring-indigo-400 "
+                      }
+                      ${props.textIcon ? "rounded rounded-l-none" : "rounded"}`}
                   />
                   <span
                     onClick={ShowPassword}
-                    className={`absolute right-4 top-1/2 translate-y-1/2 ${
+                    className={`absolute left-4 top-1/2 translate-y-1/2 ${
                       error && "top-1/3"
                     } cursor-pointer`}
                   >
@@ -98,7 +98,6 @@ export const Input = (props) => {
                       ? value
                       : ""
                   }
-                  // onChange={onChange}
                   onChange={(e) => {
                     onChange(e.target.value);
                     if (props?.extraOnChange)
@@ -109,15 +108,15 @@ export const Input = (props) => {
                   disabled={props.disabled}
                   min={props.minNumber}
                   max={props.maxNumber}
-                  className={classNames(
-                    " w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900  placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100 disabled:text-gray-500",
-                    props.className || "",
-                    props.disabled && "text-gray-500",
-                    error
-                      ? "border border-red-400 shadow"
-                      : "border border-gray-300 focus:ring-1 focus:ring-indigo-400 ",
-                    props.textIcon ? "rounded rounded-l-none" : "rounded"
-                  )}
+                  className={`w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900  placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100 disabled:text-gray-500
+                    ${props.className || ""}
+                   ${props.disabled && "text-gray-500"}
+                    ${
+                      error
+                        ? "border border-red-400 shadow"
+                        : "border border-gray-300 focus:ring-1 focus:ring-indigo-400 "
+                    }
+                    props.textIcon ? "rounded rounded-l-none" : "rounded"`}
                 />
               )}
             </div>
@@ -132,7 +131,7 @@ export const Input = (props) => {
     return (
       <div className="relative flex flex-col items-start w-full">
         {props.label && (
-          <label className="mb-2 text-gray-700">{props.label}</label>
+          <label className="mb-2 text-sm text-gray-700">{props.label}</label>
         )}
         {props.type === "password" ? (
           <>

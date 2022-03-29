@@ -1,24 +1,10 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
-export const PrivateRoute = ({
-  component: Component,
-  isPublic: isPublic,
-  ...rest
-}) => (
+export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
-      // authentication condition
-      return true ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/auth/login",
-            state: { from: props.location },
-          }}
-        />
-      );
+      return <Component {...props} />;
     }}
   />
 );
