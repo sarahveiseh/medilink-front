@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+
+@import url(./fonts.css);
+@import url(./custom.css);
+
+@tailwind utilities;
