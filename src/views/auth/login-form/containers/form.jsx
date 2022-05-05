@@ -8,14 +8,12 @@ import { useLogin } from "services";
 export const LoginForm = () => {
   const { control, handleSubmit } = useForm();
   const { mutate, isLoading } = useLogin();
-  const { userState, dispatchUser } = useUserContext();
 
-  console.log(userState);
+  const { dispatchUser } = useUserContext();
 
   const submit = (formData) => {
     mutate(formData, {
       onSuccess: (res) => {
-        console.log(res);
         dispatchUser({ type: userTypes.LOGIN_USER, payload: res?.result });
       },
     });

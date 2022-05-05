@@ -21,13 +21,8 @@ export const AdminLayout = ({ children }) => {
 
       <div
         className={`w-full  flex flex-col h-auto transition-padding transition-padding duration-500 ease-in-out 
-           ${open ? " pr-[288px]" : " pr-20"}`}
-      >
-        <Header />
-        <div className="w-full z-[10] pb-10 px-4 container mx-auto">
-          {children}
-        </div>
-        <Footer />
+           ${open ? " pr-[288px]" : " pr-20"}`}>
+        {children}
       </div>
     </div>
   );

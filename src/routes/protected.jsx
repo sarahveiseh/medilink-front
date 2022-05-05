@@ -31,6 +31,11 @@ export const protectedRoutes = [
     layout: "admin",
     component: lazyWithRetry(() => import("views/patients/list/views")),
   },
+  {
+    path: "/chat/:conversationId",
+    layout: "admin",
+    component: lazyWithRetry(() => import("views/chat")),
+  },
 ];
 
 // export const protectedRoutes = [
