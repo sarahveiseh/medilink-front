@@ -9,27 +9,27 @@ export const protectedRoutes = [
   {
     path: "/doctors/add",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/doctors/add-doctor/views")),
+    component: lazyWithRetry(() => import("views/doctors/add-doctor")),
   },
   {
     path: "/doctors",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/doctors/list/views")),
+    component: lazyWithRetry(() => import("views/doctors/list")),
   },
   {
     path: "/patients/add",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/patients/add-patients/views")),
+    component: lazyWithRetry(() => import("views/patients/add-patients")),
   },
   {
     path: "/patients/details/:id",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/patients/details/views")),
+    component: lazyWithRetry(() => import("views/patients/details")),
   },
   {
     path: "/patients",
     layout: "admin",
-    component: lazyWithRetry(() => import("views/patients/list/views")),
+    component: lazyWithRetry(() => import("views/patients/list")),
   },
   {
     path: "/chat/:conversationId",
