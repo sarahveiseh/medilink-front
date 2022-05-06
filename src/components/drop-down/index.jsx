@@ -13,6 +13,7 @@ export const DropDown = ({
   hideArrow,
   existInDom = false,
   openError = false,
+  ...rest
 }) => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(isOpen);
@@ -27,7 +28,7 @@ export const DropDown = ({
   }, [openError]);
 
   return (
-    <div className="col-full">
+    <div className="col-full" {...rest}>
       <DropDownButton
         hideArrow={hideArrow}
         toggle={toggle}

@@ -1,19 +1,12 @@
 import { Suspense } from "react";
 import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { indexRoutes } from "routes/index";
-import { PrivateRoute } from "components/PrivateRoute/PrivateRoute";
 
-import { useUi } from "hooks/use-ui";
-import { Toast } from "components/toast";
 import { AdminLayout } from "layouts/admin";
 import { Skeleton } from "./skeleton";
+import { Route } from "react-router-dom";
 
 export const Router = () => {
-  const {
-    uiState: { toast },
-    toggleToast,
-  } = useUi();
-
   return (
     <BrowserRouter>
       <AdminLayout>
@@ -23,7 +16,7 @@ export const Router = () => {
               if (prop.redirect)
                 return <Redirect from={prop.path} to={prop.to} key={key} />;
               return (
-                <PrivateRoute
+                <Route
                   path={prop.path}
                   component={prop.component}
                   isPublic={prop.isPublic}
@@ -34,9 +27,6 @@ export const Router = () => {
           </Switch>
         </Suspense>
       </AdminLayout>
-      {toast.open && (
-        <Toast {...toast} close={() => toggleToast({ open: false })} />
-      )}
     </BrowserRouter>
   );
 };
