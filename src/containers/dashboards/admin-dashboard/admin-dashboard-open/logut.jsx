@@ -9,7 +9,7 @@ export const LogoutDropdown = ({ pathname }) => {
   return (
     <DropDown
       label="خروج"
-      active={pathname.startsWith("/patients")}
+      active={pathname.startsWith("/logout")}
       onClick={() => {
         dispatchUser({ type: userTypes.LOGOUT_USER });
       }}
@@ -20,9 +20,7 @@ export const LogoutDropdown = ({ pathname }) => {
           height="36"
           className={` w-6 h-6 ml-2  cursor-pointer
             ${
-              pathname.startsWith("/patients")
-                ? "text-blue-500"
-                : "text-gray-200"
+              pathname.startsWith("/logout") ? "text-blue-500" : "text-gray-200"
             }`}
         />
       )}></DropDown>

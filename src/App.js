@@ -1,6 +1,5 @@
 import { Router } from "./router";
-import { Provider } from "react-redux";
-import store from "redux/store";
+
 import { UiProvider } from "providers/ui-provider";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -14,16 +13,15 @@ const client = new QueryClient(reactQueryConfig);
 export const App = () => {
   return (
     <QueryClientProvider client={client}>
-      <Provider store={store}>
-        <SocketContextProvider>
-          <UserProvider>
-            <UiProvider>
-              <Router />
-              <ToastContainer rtl bodyStyle={{ fontFamily: "IRANSans" }} />
-            </UiProvider>
-          </UserProvider>
-        </SocketContextProvider>
-      </Provider>
+      <SocketContextProvider>
+        <UserProvider>
+          <UiProvider>
+            <Router />
+            <ToastContainer rtl bodyStyle={{ fontFamily: "IRANSans" }} />
+          </UiProvider>
+        </UserProvider>
+      </SocketContextProvider>
+
       <ReactQueryDevtools initialIsOpen={false} position="top-left" />
     </QueryClientProvider>
   );

@@ -4,7 +4,9 @@ import { Route } from "react-router-dom";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { userState } = useUserContext();
-  if (!userState.user) return <Redirect to="/auth" />;
+
+  //todo :  uncomment for auth logic
+  // if (!userState.user) return <Redirect to="/auth" />;
   return (
     <Route
       {...rest}
