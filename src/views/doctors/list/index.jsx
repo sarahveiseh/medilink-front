@@ -1,4 +1,4 @@
-import { PatientsContainer, AddPatient } from "../containers";
+import { AddDoctor, DoctorsContainer } from "./containers";
 
 const Index = () => {
   const role = "admin";
@@ -6,8 +6,8 @@ const Index = () => {
     case "admin":
       return (
         <div className="space-y-5">
-          <AddPatient />
-          <PatientsContainer />
+          <AddDoctor />
+          <DoctorsContainer />
         </div>
       );
     default:
