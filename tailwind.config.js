@@ -1,6 +1,5 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
   mode: "jit",
   darkMode: false,
   theme: {
@@ -27,6 +26,8 @@ module.exports = {
         bounce400: "bounce 1s infinite 400ms",
         bounce800: "bounce 2s infinite 600ms",
         pulse200: "pulse 1s linear infinite 20ms",
+        "fade-in-up": "fade-in-up 0.4s ease-out",
+        "fade-in-right": "fade-in-right 0.4s ease-in-out",
       },
       transitionProperty: {
         width: "width",
@@ -53,10 +54,6 @@ module.exports = {
             transform: "translateX(0)",
           },
         },
-      },
-      animation: {
-        "fade-in-up": "fade-in-up 0.4s ease-out",
-        "fade-in-right": "fade-in-right 0.4s ease-in-out",
       },
     },
   },
