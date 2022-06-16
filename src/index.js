@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./styles/index.css";
 import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./globalStyle.css";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -21,7 +21,7 @@ export const LoginForm = () => {
 
   return (
     <form
-      className=" grid grid-cols-1 gap-y-4 mb-4"
+      className="grid grid-cols-1 pb-5 gap-y-4 "
       onSubmit={handleSubmit(submit)}>
       <Input label="نام کاربری" name="username" required control={control} />
       <Input
@@ -37,7 +37,7 @@ export const LoginForm = () => {
       <Button
         type="submit"
         loading={isLoading}
-        className="w-full bg-blue-500 text-white mt-6">
+        className="w-full my-6 text-white bg-blue-500">
         ورود
       </Button>
     </form>

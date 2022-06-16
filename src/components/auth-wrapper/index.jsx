@@ -1,7 +1,7 @@
 export const AuthWrapper = ({ children }) => {
   return (
-    <div className="w-full flex items-center justify-center pt-[100px]">
+    <div className="flex items-center justify-center w-full h-full md:pt-[100px] pt-[50px]">
       {children}
     </div>
-  )
-}
+  );
+};

@@ -3,17 +3,17 @@ import { LoginForm } from ".";
 
 export const LoginWrapper = () => {
   return (
-    <div className="w-2/3 bg-white shadow-lg rounded h-[500px] flex md:flex-row flex-col  ">
-      <div className=" md:hidden flex items-center justify-center w-full h-full ">
+    <div className="flex flex-col w-2/3 bg-white rounded shadow-lg md:flex-row min-h-[500px] ">
+      <div className="flex items-center justify-center w-full h-full md:hidden">
         <LoginSvg className="w-full h-full" />
       </div>
-      <div className="w-full pt-16 px-6 flex flex-col items-center space-y-4 bg-gray-50 border-r">
-        <span className="font-bold text-center w-full text-sm sm:text-xl ">
+      <div className="flex flex-col items-center w-full px-6 pt-16 space-y-4 border-r bg-gray-50">
+        <span className="w-full text-sm font-bold text-center sm:text-xl ">
           به مدلینک وارد شوید
         </span>
         <LoginForm />
       </div>
-      <div className=" hidden md:flex items-center justify-center w-full h-full ">
+      <div className="items-center justify-center hidden w-full h-full md:flex">
         <LoginSvg className="w-full h-full" />
       </div>
     </div>
