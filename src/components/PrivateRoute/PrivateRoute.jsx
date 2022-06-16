@@ -1,6 +1,7 @@
 import { useUserContext } from "hooks";
 import { Redirect } from "react-router-dom";
 import { Route } from "react-router-dom";
+import { ResponsiveLayout } from "layouts/responsive";
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
   const { userState } = useUserContext();
@@ -11,7 +12,11 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        return <Component {...props} />;
+        return (
+          <ResponsiveLayout>
+            <Component {...props} />
+          </ResponsiveLayout>
+        );
       }}
     />
   );

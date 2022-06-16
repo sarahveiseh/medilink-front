@@ -7,7 +7,6 @@ import { UserProvider } from "providers/user-provider";
 import { reactQueryConfig } from "config/services/react-query";
 import { ToastContainer } from "react-toastify";
 import { SocketContextProvider } from "providers/socket-provider";
-
 const client = new QueryClient(reactQueryConfig);
 
 export const App = () => {

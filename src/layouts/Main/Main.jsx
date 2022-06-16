@@ -4,6 +4,7 @@ import { Switch, Redirect } from "react-router-dom";
 import { protectedRoutes } from "routes/protected";
 import { PrivateRoute } from "components/PrivateRoute/PrivateRoute";
 import { Skeleton } from "router/skeleton";
+import { ResponsiveLayout } from "layouts/responsive";
 
 const Main = () => {
   return (
