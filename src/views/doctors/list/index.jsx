@@ -1,12 +1,24 @@
-import { useUserContext } from "hooks";
+import { useRole } from "hooks";
 import { AddDoctor, DoctorsContainer } from "./containers";
 
 const Index = () => {
-  const role = "admin";
-  const { userState } = useUserContext();
-  console.log(userState);
+  const role = useRole();
   switch (role) {
     case "admin":
+      return (
+        <div className="space-y-5">
+          <AddDoctor />
+          <DoctorsContainer />
+        </div>
+      );
+    case "doctor":
+      return (
+        <div className="space-y-5">
+          <AddDoctor />
+          <DoctorsContainer />
+        </div>
+      );
+    case "patient":
       return (
         <div className="space-y-5">
           <AddDoctor />
