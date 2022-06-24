@@ -1,6 +1,6 @@
 export const PatientsContainer = () => {
   return (
-    <div className="w-full h-[80vh] grid grid-cols-1 border border-gray-50 sm:grid-cols-2 md:grid-cols-3 gap-5">
+    <div className="w-full h-[80vh] grid xs:grid-cols-3 border border-gray-50 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5">
       {[
         { name: "سارا", age: 23 },
         { name: "مدی", age: 24 },
