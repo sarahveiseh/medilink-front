@@ -1,6 +1,11 @@
+import { useUserContext } from "hooks";
+import { userTypes } from "providers/user-provider/types";
+import { useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
 function useErrorHandler() {
+  const { dispatchUser } = useUserContext();
+  const qc = useQueryClient();
   const handleFailedRequest = (err) => {
     //401
     const statusCode = Number(err?.response?.status);
@@ -22,6 +27,16 @@ function useErrorHandler() {
     if (statusCode === 400) {
       //bad request
       toast.error(messageError);
+      return;
+    }
+    if (statusCode === 401) {
+      //logout user
+      toast.error("لطفا مجدد وارد سیستم شوید.");
+      dispatchUser({ type: userTypes.LOGOUT_USER });
+      qc.invalidateQueries();
+      qc.removeQueries();
+      qc.resetQueries();
+
       return;
     }
 

@@ -2,6 +2,7 @@ import { Axios } from "config/services/fetcher-instance";
 import { UserContext } from "providers/user-provider";
 
 import { useContext } from "react";
+import { replaceUrlParams } from "utils";
 import useErrorHandler from "./use-error-handler";
 
 export const useFetcher = (config) => {
@@ -27,6 +28,8 @@ export const useFetcher = (config) => {
   return (data = null) =>
     new Promise((resolve, reject) => {
       if (data) axiosConfig.data = data;
+      if (data && config.replaceParamsInUrl)
+        axiosConfig.url = replaceUrlParams(config.url, data);
       if (data && axiosConfig.method === "GET") axiosConfig.params = data;
 
       //send request

@@ -1,12 +1,15 @@
 /* eslint-disable */
 import { Suspense } from "react";
-import { Switch, Redirect } from "react-router-dom";
+import { Switch, Redirect, useLocation } from "react-router-dom";
 import { protectedRoutes } from "routes/protected";
 import { PrivateRoute } from "components/PrivateRoute/PrivateRoute";
 import { Skeleton } from "router/skeleton";
 import { ResponsiveLayout } from "layouts/responsive";
 
 const Main = () => {
+  const location = useLocation();
+
+  if (location.pathname === "/") return <Redirect to={"/profile"} />;
   return (
     <Suspense fallback={<Skeleton />}>
       <Switch>

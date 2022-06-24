@@ -1,4 +1,8 @@
+import { useGetPatientDoctors } from "services";
+
 export const DoctorsContainer = () => {
+  const { isLoading, isError, data } = useGetPatientDoctors();
+
   return (
     <div className="w-full h-[80vh] grid grid-cols-1 border border-gray-50 sm:grid-cols-2 md:grid-cols-3 gap-5">
       {[

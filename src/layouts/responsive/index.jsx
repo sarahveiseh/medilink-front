@@ -13,7 +13,7 @@ export const ResponsiveLayout = (props) => {
 
       name: "پروفایل",
       icon: <ICPerson className="w-5 h-5 text-inherit md:w-8 md:h-8" />,
-      route: "/admin",
+      route: "/profile",
     },
     {
       key: "01",

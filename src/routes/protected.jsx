@@ -2,7 +2,7 @@ import { lazyWithRetry } from "components/lazy-with-retry";
 
 export const protectedRoutes = [
   {
-    path: "/admin",
+    path: "/profile",
     layout: "admin",
     component: lazyWithRetry(() => import("views/profile")),
   },
