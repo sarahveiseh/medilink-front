@@ -1,10 +1,13 @@
-import { ResponsiveLayout } from "layouts/responsive";
+import { PatientsProfile } from "./containers/patients";
+import { DoctorProfile } from "./containers/doctor";
 
 const Index = () => {
-  const role = "admin";
+  const role = "patient";
   switch (role) {
-    case "admin":
-      return <div></div>;
+    case "patient":
+      return <PatientsProfile />;
+    case "doctor":
+      return <DoctorProfile />;
     default:
       return null;
   }

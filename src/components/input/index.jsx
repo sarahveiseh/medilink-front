@@ -25,10 +25,9 @@ export const Input = (props) => {
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <div className="relative flex flex-col items-start w-full ">
             <div
-              className={`flex items-center text-sm ${props.label && "mb-2"}`}
-            >
+              className={`flex items-center text-sm ${props.label && "mb-2"}`}>
               {props.label && (
-                <label className=" text-sm text-gray-700" htmlFor={props.name}>
+                <label className="text-sm text-gray-700 " htmlFor={props.name}>
                   {props.label}
                 </label>
               )}
@@ -78,8 +77,7 @@ export const Input = (props) => {
                     onClick={ShowPassword}
                     className={`absolute left-4 top-1/2 translate-y-1/2 ${
                       error && "top-1/3"
-                    } cursor-pointer`}
-                  >
+                    } cursor-pointer`}>
                     {showPassword === "password" ? (
                       <FaRegEye />
                     ) : (
@@ -135,7 +133,6 @@ export const Input = (props) => {
         )}
         {props.type === "password" ? (
           <>
-            {" "}
             <input
               value={props.value || ""}
               onChange={props.onChange}
@@ -151,8 +148,7 @@ export const Input = (props) => {
               onClick={ShowPassword}
               className={`absolute right-4 top-1/2 translate-y-1/2 cursor-pointer ${
                 props?.value?.length > 30 && "bg-gray-100"
-              }`}
-            >
+              }`}>
               {showPassword === "password" ? <FaRegEye /> : <FaRegEyeSlash />}
             </span>
           </>

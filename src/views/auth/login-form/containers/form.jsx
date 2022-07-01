@@ -4,12 +4,19 @@ import { useUserContext } from "hooks";
 import { userTypes } from "providers/user-provider/types";
 import { useForm } from "react-hook-form";
 import { useLogin } from "services";
+import { useSearchParams } from "hooks/use-search-params";
 
 export const LoginForm = () => {
   const { control, handleSubmit } = useForm();
   const { mutate, isLoading } = useLogin();
 
   const { dispatchUser } = useUserContext();
+
+  //!!!!ATTENTION!!!!!
+  const { role } = useSearchParams();
+  //USE THIS ROLE TO SEND REQUEST TO LOGIN PATIENT OR DOCTOR
+  //IF LOGIN WAS SUCCESSFUL SHOULD BE REDIRECTED TO /profile WITH THIS ROLE SAVED AS THEIR ROLE
+  //TO VIEW WITCH DASHBOARD
 
   const submit = (formData) => {
     mutate(formData, {
@@ -21,7 +28,7 @@ export const LoginForm = () => {
 
   return (
     <form
-      className="grid w-full grid-cols-1  pb-14 gap-y-4"
+      className="grid w-full grid-cols-1 pb-14 gap-y-4"
       onSubmit={handleSubmit(submit)}>
       <Input label="نام کاربری" name="username" required control={control} />
       <Input
