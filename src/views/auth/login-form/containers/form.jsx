@@ -28,7 +28,7 @@ export const LoginForm = () => {
 
   return (
     <form
-      className="grid w-full grid-cols-1 pb-14 gap-y-4"
+      className="grid w-full grid-cols-1 pb-8 gap-y-4"
       onSubmit={handleSubmit(submit)}>
       <Input label="نام کاربری" name="username" required control={control} />
       <Input

@@ -23,7 +23,7 @@ export const DoctorRegister = () => {
             <span>بیمار هستید؟</span>
             <Link
               className="p-2 mx-2 text-center text-white bg-blue-400 rounded"
-              to="/">
+              to="/register?role=patient">
               به عنوان بیمار ثبت نام کنید
             </Link>
           </div>
@@ -173,6 +173,14 @@ export const DoctorRegister = () => {
                 )}
               </form>
             </div>
+          </div>
+          <div className="flex items-center justify-between p-5 border border-blue-400 rounded">
+            <span>حساب کاربری دارید؟</span>
+            <Link
+              className="p-2 mx-2 text-center text-white bg-blue-400 rounded"
+              to="/auth">
+              وارد شوید
+            </Link>
           </div>
         </div>
       </Wrapper>

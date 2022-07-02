@@ -1,5 +1,6 @@
 import { ReactComponent as LoginSvg } from "assets/login.svg";
 import { LoginForm } from ".";
+import { Link } from "react-router-dom";
 
 export const LoginWrapper = () => {
   return (
@@ -12,6 +13,21 @@ export const LoginWrapper = () => {
           به مدلینک وارد شوید
         </span>
         <LoginForm />
+        <div className="w-full">
+          <div className="w-full text-center ">حساب کاربری ندارید؟</div>
+          <div className="flex justify-between w-full px-7">
+            <Link
+              className="mx-1 text-sm text-blue-400 hover:cursor-pointer"
+              to="/register?role=doctor">
+              ثبت نام پزشک
+            </Link>
+            <Link
+              className="mx-1 text-sm text-blue-400 hover:cursor-pointer"
+              to="/register?role=patient">
+              ثبت نام بیمار
+            </Link>
+          </div>
+        </div>
       </div>
       <div className="items-center justify-center hidden w-full h-full xl:flex">
         <LoginSvg className="w-full h-full" />
