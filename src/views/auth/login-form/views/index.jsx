@@ -1,6 +1,6 @@
 import { AuthWrapper } from "components/auth-wrapper";
 import { useUserContext } from "hooks";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 import { LoginWrapper } from "../containers";
 
 const Login = () => {

@@ -8,78 +8,66 @@ import { Select } from "components/select";
 export const WorkDays = ({ control }) => {
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "workSchedule.activeDays",
+    name: "activeDays",
   });
   return (
-    <div>
-      <Button
-        tooltip="افزودن روز کاری جدید"
-        icon
-        type="button"
-        onClick={() => append("")}>
-        <ICPlus className="w-5 h-5 text-blue-400" />
-      </Button>
-      {fields.map((field, index) => (
-        <div className="flex items-center space-x-3">
-          <Select
-            name={`workSchedule.activeDays.${index}.day`}
-            label="روز هفته"
-            placeholder="روز هفته مد نظر خود را وارد انتخاب کنید"
-            required
-            options={[
-              { value: "sat", label: "شنبه" },
-              { value: "sun", label: "یکشنبه" },
-              { value: "mon", label: "دوشنبه" },
-              { value: "tue", label: "سه شنبه" },
-              { value: "wed", label: "جهارشنبه" },
-              { value: "thu", label: "پنجشنبه" },
-              { value: "fri", label: "جمعه" },
-            ]}
-          />
-          <Select
-            name={`workSchedule.activeDays.${index}.start`}
-            label="شروع ساعت کاری"
-            required
-            options={[
-              { value: "sat", label: "شنبه" },
-              { value: "sun", label: "یکشنبه" },
-              { value: "mon", label: "دوشنبه" },
-              { value: "tue", label: "سه شنبه" },
-              { value: "wed", label: "جهارشنبه" },
-              { value: "thu", label: "پنجشنبه" },
-              { value: "fri", label: "جمعه" },
-            ]}
-          />
-          <Select
-            name={`workSchedule.activeDays.${index}.end`}
-            label="پایان ساعت کاری"
-            required
-            options={[
-              { value: "sat", label: "شنبه" },
-              { value: "sun", label: "یکشنبه" },
-              { value: "mon", label: "دوشنبه" },
-              { value: "tue", label: "سه شنبه" },
-              { value: "wed", label: "جهارشنبه" },
-              { value: "thu", label: "پنجشنبه" },
-              { value: "fri", label: "جمعه" },
-            ]}
-          />
-          <Input
-            name={`workSchedule.activeDays.${index}.duration`}
-            type="number"
-            label="طول هر جلسه"
-            placeholder="طول هر جلسه را به دقیق وارد کنید"
-            required
-          />
-          <Button
-            type="button"
-            tooltip="حذف این روز"
-            icon
-            onClick={() => remove(field.id)}>
-            <ICDelete className="w-5 h-5 text-red-400" />
-          </Button>
-        </div>
-      ))}
-    </div>
+    <fieldset className="p-3 border border-gray-400 rounded">
+      <legend>روز های کاری</legend>
+      <div className="flex flex-col">
+        {fields.map((field, index) => (
+          <div className="flex flex-col items-center space-x-3">
+            <Select
+              name={`activeDays.${index}.day`}
+              label="روز هفته"
+              placeholder="روز هفته مد نظر خود را وارد انتخاب کنید"
+              required
+              options={[
+                { value: "sat", title: "شنبه" },
+                { value: "sun", title: "یکشنبه" },
+                { value: "mon", title: "دوشنبه" },
+                { value: "tue", title: "سه شنبه" },
+                { value: "wed", title: "جهارشنبه" },
+                { value: "thu", title: "پنجشنبه" },
+                { value: "fri", title: "جمعه" },
+              ]}
+            />
+            <div className="flex justify-between">
+              <Input
+                name={`activeDays.${index}.start`}
+                required
+                placeholder="شروع کار"
+              />
+              <Input
+                name={`activeDays.${index}.end`}
+                required
+                placeholder="پایان کار"
+              />
+              <Input
+                name={`activeDays.${index}.duration`}
+                type="number"
+                placeholder="طول هر جلسه به دقیقه وارد کنید"
+                required
+              />
+            </div>
+            <Button
+              type="button"
+              tooltip="حذف این روز"
+              icon
+              onClick={() => remove(field.id)}
+              className="mx-5 mt-5">
+              <ICDelete className="w-5 h-5 text-red-400" />
+            </Button>
+          </div>
+        ))}
+        <Button
+          tooltip="افزودن روز کاری جدید"
+          icon
+          type="button"
+          onClick={() => append({})}
+          className="self-end">
+          <ICPlus className="w-5 h-5 text-blue-400" />
+        </Button>
+      </div>
+    </fieldset>
   );
 };

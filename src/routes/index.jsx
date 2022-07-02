@@ -8,6 +8,11 @@ export const indexRoutes = [
     isPublic: true,
   },
   {
+    path: "/register",
+    component: lazyWithRetry(() => import("views/auth/register/views")),
+    isPublic: true,
+  },
+  {
     path: "/",
     component: MainLayout,
   },

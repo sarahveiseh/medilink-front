@@ -63,7 +63,7 @@ export const Input = (props) => {
                     min={props.minNumber}
                     max={props.maxNumber}
                     className={`
-                      w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900 placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100
+                      w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900 placeholder-gray-500 disabled:bg-gray-100
                       ${props.className || ""},
                       ${props.disabled && "text-gray-500"}
                       ${
@@ -106,7 +106,7 @@ export const Input = (props) => {
                   disabled={props.disabled}
                   min={props.minNumber}
                   max={props.maxNumber}
-                  className={`w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900  placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100 disabled:text-gray-500
+                  className={`w-full focus:outline-none focus:shadow px-3 h-[44px]  text-gray-900  placeholder-gray-500  disabled:bg-gray-100 disabled:text-gray-500
                     ${props.className || ""}
                    ${props.disabled && "text-gray-500"}
                     ${

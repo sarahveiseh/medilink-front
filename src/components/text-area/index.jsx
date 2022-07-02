@@ -25,7 +25,7 @@ export const TextArea = (props) => {
               onChange={onChange}
               placeholder={props.placeholder}
               disabled={props.disabled}
-              className={`w-full  rounded focus:outline-none focus:shadow h-24 p-3  text-gray-900 bg-white placeholder-gray-500 dark:bg-gray-400 dark:placeholder-gray-700 disabled:bg-gray-100 disabled:text-gray-500
+              className={`w-full  rounded focus:outline-none focus:shadow h-24 p-3  text-gray-900 bg-white placeholder-gray-500 disabled:bg-gray-100 disabled:text-gray-500
                 ${
                   error
                     ? "border-2 border-red-400 shadow"

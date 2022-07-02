@@ -11,7 +11,7 @@ export const LoadableSelect = ({
   if (isLoading) {
     return (
       <div className="flex flex-col w-full">
-        <label htmlFor="loading" className="text-gray-900 mb-2">
+        <label htmlFor="loading" className="mb-2 text-gray-900">
           {label}
         </label>
         <div className="w-full h-[40px] p-2 rounded bg-gray-200 animate-pulse" />
