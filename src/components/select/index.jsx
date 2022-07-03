@@ -40,8 +40,7 @@ export const Select = memo((props) => {
                   error
                     ? "border-2 border-red-400 shadow"
                     : "border border-gray-300 "
-                }`}
-            >
+                }`}>
               <option value="" hidden disabled></option>
               {props.options?.map((option, index) => (
                 <option value={option.value} key={index}>
@@ -78,8 +77,7 @@ export const Select = memo((props) => {
           disabled={props.disabled}
           className={`border border-gray-300 w-full  rounded focus:outline-none focus:shadow  px-3 h-[44px]  text-gray-900 bg-white ${
             props.className || ""
-          }`}
-        >
+          }`}>
           <option value="" disabled>
             {props.placeholder}
           </option>

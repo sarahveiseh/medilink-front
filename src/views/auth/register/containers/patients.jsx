@@ -1,15 +1,47 @@
 import { Wrapper } from "../components/wrapper";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Input } from "components/input";
 import { Button } from "components/button";
 import { AuthWrapper } from "components/auth-wrapper";
-
-//!!!!!!!ATTENTION !!!!!!!!
-//if the submit action was successful user should be redirected to login page with a query param of role=patient
+import { yupResolver } from "@hookform/resolvers/yup";
+import { RegisterPatientValidationSchema } from "constants/form-validation-schema";
+import { useRegisterPatient } from "services";
+import { toast } from "react-toastify";
 
 export const PatientRegister = () => {
-  const { control, onSubmit } = useForm();
+  const { mutate, isLoading } = useRegisterPatient();
+  const history = useHistory();
+  const { control, handleSubmit } = useForm({
+    resolver: yupResolver(RegisterPatientValidationSchema),
+  });
+  const submitForm = (formData) => {
+    mutate(
+      {
+        username: formData.username,
+        password: formData.password,
+        firstName: formData.name,
+        lastName: formData.lastName,
+        sex: "male",
+        dateOfBirth: "1340-10-02",
+        phoneNumber: "09124556554",
+        address: "جهانشهر - کرج",
+        weight: "87kg",
+        height: "176cm",
+        bloodType: "A+",
+        specialDiseases: [],
+        currentMedications: [],
+        medicationAllergies: [],
+        surgeries: [],
+      },
+      {
+        onSuccess: (res) => {
+          toast.success(res.message);
+          history.push("/login?role=patient");
+        },
+      },
+    );
+  };
   return (
     <AuthWrapper>
       <Wrapper title="ثبت نام بیمار">
@@ -22,26 +54,25 @@ export const PatientRegister = () => {
               به عنوان پزشک ثبت نام کنید
             </Link>
           </div>
-          <form className="space-y-5 border border-blue-400 rounded p-7">
+          <form
+            onSubmit={handleSubmit(submitForm)}
+            className="space-y-5 border border-blue-400 rounded p-7">
             <Input
               name="name"
               label="نام"
               placeholder="نام خود را وارد کنید"
-              required
               control={control}
             />
             <Input
               name="lastName"
               label="نام خانوادگی"
               placeholder="نام خانوادگی خود را وارد کنید"
-              required
               control={control}
             />
             <Input
               name="username"
               label="کد ملی"
               placeholder="کد ملی خود را وارد کنید"
-              required
               control={control}
             />
             <Input
@@ -49,7 +80,6 @@ export const PatientRegister = () => {
               type="password"
               label="رمزعبور"
               placeholder="رمزعبور"
-              required
               control={control}
             />
             <Input
@@ -57,10 +87,12 @@ export const PatientRegister = () => {
               type="password"
               label="تائید رمزعبور"
               placeholder="رمزعبور را دوباره وارد کنید"
-              required
               control={control}
             />
-            <Button type="submit" className="p-4 text-white bg-blue-400 ">
+            <Button
+              loading={isLoading}
+              type="submit"
+              className="p-4 text-white bg-blue-400 ">
               ثبت نام
             </Button>
           </form>

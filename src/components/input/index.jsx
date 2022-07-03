@@ -2,6 +2,7 @@ import { useValidation } from "hooks/use-validation";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { convertFaToEnNumbers } from "utils/data-types";
 import { ToolTip } from "../q-tooltip";
 import { InputSkeleton } from "./skeleton";
 
@@ -53,7 +54,7 @@ export const Input = (props) => {
                         : ""
                     }
                     onChange={(e) => {
-                      onChange(e.target.value);
+                      onChange(convertFaToEnNumbers(e.target.value));
                       if (props?.extraOnChange)
                         props?.extraOnChange(e.target.value);
                     }}
@@ -97,7 +98,7 @@ export const Input = (props) => {
                       : ""
                   }
                   onChange={(e) => {
-                    onChange(e.target.value);
+                    onChange(convertFaToEnNumbers(e.target.value));
                     if (props?.extraOnChange)
                       props?.extraOnChange(e.target.value);
                   }}
@@ -135,7 +136,9 @@ export const Input = (props) => {
           <>
             <input
               value={props.value || ""}
-              onChange={props.onChange}
+              onChange={(e) => {
+                props.onChange(convertFaToEnNumbers(e.target.value));
+              }}
               type={showPassword || "text"}
               placeholder={props.placeholder}
               disabled={props.disabled}
@@ -155,7 +158,9 @@ export const Input = (props) => {
         ) : (
           <input
             value={props.value || ""}
-            onChange={props.onChange}
+            onChange={(e) => {
+              props.onChange(convertFaToEnNumbers(e.target.value));
+            }}
             type={props.type || "text"}
             placeholder={props.placeholder}
             disabled={props.disabled}

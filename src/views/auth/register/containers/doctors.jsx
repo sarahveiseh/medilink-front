@@ -1,20 +1,58 @@
 import { Wrapper } from "../components/wrapper";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Input } from "components/input";
 import { Button } from "components";
 import { TextArea } from "components/text-area";
 import { Specialty } from "../components/speciallity-array-input";
 import { WorkDays } from "../components/work-days-aray-input";
 import { AuthWrapper } from "components/auth-wrapper";
-
-//!!!!!!!ATTENTION !!!!!!!!
-//if the submit action was successful user should be redirected to login page with a query param of role=doctor
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRegisterDoctor } from "services";
+import { toast } from "react-toastify";
+import { RegisterDoctorValidationSchema } from "constants/form-validation-schema";
 
 export const DoctorRegister = () => {
+  const history = useHistory();
+  const { mutate, isLoading } = useRegisterDoctor();
   const [step, setStep] = useState(1);
-  const { control, onSubmit } = useForm();
+  const currentValidationSchema = RegisterDoctorValidationSchema[step - 1];
+
+  const { control, handleSubmit, trigger } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(currentValidationSchema),
+  });
+  const submitForm = (formData) => {
+    mutate(
+      {
+        username: formData.username,
+        password: formData.password,
+        firstName: formData.name,
+        lastName: formData.lastName,
+        medicalCode: formData.medicalCode,
+        speciality: formData.speciality,
+        WorkSchedule: {
+          activeDays: formData.activeDays,
+          bookingInAdvance: formData.bookingInAdvance,
+        },
+        sex: "female",
+        dateOfBirth: "1345-05-02",
+        phoneNumber: formData.phoneNumber,
+        address: formData.address,
+      },
+      {
+        onSuccess: (res) => {
+          toast.success(res.message);
+          history.push("/auth?role=doctor");
+        },
+      },
+    );
+  };
+  const handleNextStep = async (stepNumber) => {
+    const isStepValid = await trigger();
+    if (isStepValid) setStep(stepNumber);
+  };
   return (
     <AuthWrapper>
       <Wrapper title="ثبت نام پزشک">
@@ -49,21 +87,21 @@ export const DoctorRegister = () => {
               />
             </div>
             <div>
-              <form className="space-y-5 border border-blue-400 rounded p-7">
+              <form
+                onSubmit={handleSubmit(submitForm)}
+                className="space-y-5 border border-blue-400 rounded p-7">
                 {step === 1 && (
                   <>
                     <Input
                       name="name"
                       label="نام"
                       placeholder="نام خود را وارد کنید"
-                      required
                       control={control}
                     />
                     <Input
                       name="lastName"
                       label="نام خانوادگی"
                       placeholder="نام خانوادگی خود را وارد کنید"
-                      required
                       control={control}
                     />
                     <Input
@@ -98,7 +136,9 @@ export const DoctorRegister = () => {
                     />
                     <div className="flex justify-between w-full">
                       <Button
-                        onClick={() => setStep(2)}
+                        onClick={() => {
+                          handleNextStep(2);
+                        }}
                         type="button"
                         className="p-4 text-white bg-blue-400 ">
                         بعدی
@@ -112,21 +152,18 @@ export const DoctorRegister = () => {
                       name="phoneNumber"
                       label="شماره تلفن"
                       placeholder="شماره تلفن مطب خود را وارد کنید"
-                      required
                       control={control}
                     />
                     <Input
                       name="city"
                       label="شهر"
                       placeholder="نام شهر خود را وارد کنید"
-                      required
                       control={control}
                     />
                     <TextArea
                       name="address"
                       label="آدرس"
                       placeholder="آدرس مطب خود را وارد کنید"
-                      required
                       control={control}
                     />
                     <div className="flex justify-between w-full">
@@ -137,7 +174,7 @@ export const DoctorRegister = () => {
                         قبلی
                       </Button>
                       <Button
-                        onClick={() => setStep(3)}
+                        onClick={() => handleNextStep(3)}
                         type="button"
                         className="p-4 text-white bg-blue-400 ">
                         بعدی
@@ -150,10 +187,9 @@ export const DoctorRegister = () => {
                     <Specialty control={control} />
                     <WorkDays control={control} />
                     <Input
-                      name="workSchedule.bookingInAdvance"
+                      name="bookingInAdvance"
                       label="محدودیت رزرو از قبل"
                       placeholder="بیماران از چند روز پیش میتوانند وقت رزرو کنند؟"
-                      required
                       control={control}
                     />
                     <div className="flex justify-between w-full">
@@ -165,6 +201,7 @@ export const DoctorRegister = () => {
                       </Button>
                       <Button
                         type="submit"
+                        loading={isLoading}
                         className="p-4 text-white bg-blue-400 ">
                         ثبت نام
                       </Button>

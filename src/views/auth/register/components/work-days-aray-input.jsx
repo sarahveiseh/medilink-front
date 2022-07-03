@@ -15,18 +15,18 @@ export const WorkDays = ({ control }) => {
       <legend>روز های کاری</legend>
       <div className="flex flex-col">
         {fields.map((field, index) => (
-          <div className="flex flex-col items-center space-x-3">
+          <div key={field.id} className="flex flex-col items-center space-x-3">
             <Select
               name={`activeDays.${index}.day`}
               label="روز هفته"
               placeholder="روز هفته مد نظر خود را وارد انتخاب کنید"
-              required
+              control={control}
               options={[
                 { value: "sat", title: "شنبه" },
                 { value: "sun", title: "یکشنبه" },
                 { value: "mon", title: "دوشنبه" },
                 { value: "tue", title: "سه شنبه" },
-                { value: "wed", title: "جهارشنبه" },
+                { value: "wed", title: "چهارشنبه" },
                 { value: "thu", title: "پنجشنبه" },
                 { value: "fri", title: "جمعه" },
               ]}
@@ -36,24 +36,26 @@ export const WorkDays = ({ control }) => {
                 name={`activeDays.${index}.start`}
                 required
                 placeholder="شروع کار"
+                control={control}
               />
               <Input
                 name={`activeDays.${index}.end`}
                 required
                 placeholder="پایان کار"
+                control={control}
               />
               <Input
                 name={`activeDays.${index}.duration`}
-                type="number"
                 placeholder="طول هر جلسه به دقیقه وارد کنید"
                 required
+                control={control}
               />
             </div>
             <Button
               type="button"
               tooltip="حذف این روز"
               icon
-              onClick={() => remove(field.id)}
+              onClick={() => remove(index)}
               className="mx-5 mt-5">
               <ICDelete className="w-5 h-5 text-red-400" />
             </Button>

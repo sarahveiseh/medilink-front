@@ -10,3 +10,5 @@ export * from "./users/use-update-doctor-information";
 export * from "./users/use-update-user-profile";
 export * from "./users/use-get-profile";
 export * from "./users/use-add-user";
+export * from "./users/use-register-doctor";
+export * from "./users/use-register-patient";
