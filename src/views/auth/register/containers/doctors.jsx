@@ -36,8 +36,6 @@ export const DoctorRegister = () => {
           activeDays: formData.activeDays,
           bookingInAdvance: formData.bookingInAdvance,
         },
-        sex: "female",
-        dateOfBirth: "1345-05-02",
         phoneNumber: formData.phoneNumber,
         address: formData.address,
       },

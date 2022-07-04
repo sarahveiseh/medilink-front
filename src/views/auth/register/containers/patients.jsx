@@ -22,22 +22,11 @@ export const PatientRegister = () => {
         password: formData.password,
         firstName: formData.name,
         lastName: formData.lastName,
-        sex: "male",
-        dateOfBirth: "1340-10-02",
-        phoneNumber: "09124556554",
-        address: "جهانشهر - کرج",
-        weight: "87kg",
-        height: "176cm",
-        bloodType: "A+",
-        specialDiseases: [],
-        currentMedications: [],
-        medicationAllergies: [],
-        surgeries: [],
       },
       {
         onSuccess: (res) => {
           toast.success(res.message);
-          history.push("/login?role=patient");
+          history.push("/auth?role=patient");
         },
       },
     );
